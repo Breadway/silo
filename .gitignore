@@ -1,0 +1,5 @@
+target/
+silo-ui/node_modules/
+silo-ui/dist/
+*.bak.*
+.env

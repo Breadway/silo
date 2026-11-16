@@ -1,0 +1,18 @@
+[Unit]
+Description=Silo game archive server
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/silo-server
+Restart=on-failure
+RestartSec=5
+
+# Required: Hestia's Tailscale address so client can rsync.
+# Set these in ~/.config/systemd/user/silo-server.service.d/override.conf
+Environment=SILO_LISTEN_ADDR=0.0.0.0:7743
+Environment=SILO_DB_PATH=%h/.local/share/silo/catalog.db
+Environment=SILO_ARCHIVE_DIR=%h/.local/share/silo/archives
+
+[Install]
+WantedBy=default.target
